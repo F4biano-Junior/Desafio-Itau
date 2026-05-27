@@ -1,0 +1,47 @@
+para rodar esse projeto do Itaú, por padrão, ele levanta um servidor embutido (chamado Tomcat) na porta 8080 da sua máquina.
+
+Isso significa que o link base da sua API sempre vai começar com:
+http://localhost:8080
+
+É aqui que entra o Controller.
+O link final da sua API é definido através da anotação @RequestMapping.
+
+(Método POST): http://localhost:8080/transaction
+
+JSON para realizar uma transação
+{
+  "value": 100.50,
+  "dateTime": "yyyy-MM-ddTHH:mm:ss.SSS-hh:mm"
+}
+
+  Preenchido: 2020-08-07T12:34:56.789-03:00
+Entendendo o formato da Data e Hora.
+Veja o que cada letra significa:
+
+    yyyy Ano com 4 dígitos (ex: 2020)
+
+    - Traço separador
+
+    MM Mês com 2 dígitos (ex: 08 para agosto)
+
+    - Traço separador
+
+    dd Dia com 2 dígitos (ex: 07)
+
+    T A letra "T" maiúscula e fixa. Ela serve para avisar o sistema: "A data acabou, agora começa o horário".
+
+    HH Hora com 2 dígitos no formato 24h (ex: 12 ou 23)
+
+    : Dois-pontos separador
+
+    mm Minutos com 2 dígitos (ex: 34)
+
+    : Dois-pontos separador
+
+    ss Segundos com 2 dígitos (ex: 56)
+
+    .SSS Ponto seguido dos Milissegundos com 3 dígitos (ex: .789)
+
+    -hh:mm (ou +hh:mm): O fuso horário (Offset) em relação ao horário global (UTC).
+    O Brasil (horário de Brasília), por exemplo, costuma ser -03:00.
+
