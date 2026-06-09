@@ -1,25 +1,21 @@
 package br.com.api.desafio_itau.repository;
 
+
 import br.com.api.desafio_itau.model.Transaction;
 
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @org.springframework.stereotype.Repository
 public class Repository {
-    private final List<Transaction> transactions;
+    private final List<Transaction> transactions = new CopyOnWriteArrayList<>();
 
-    public Repository() {
-        this.transactions = new ArrayList<>();
+    public void save(Transaction transaction) {
+        transactions.add(transaction);
+
     }
 
-    public Transaction save(Transaction transaction) {
-        this.transactions.add(transaction);
-        return transaction;
-    }
-
-    public List<Transaction> findAll() {
+    public List<Transaction> getAll() {
         return List.copyOf(transactions);
     }
 }
